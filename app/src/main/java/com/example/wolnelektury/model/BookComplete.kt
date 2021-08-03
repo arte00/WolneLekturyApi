@@ -1,0 +1,33 @@
+package com.example.wolnelektury.model
+
+data class BookComplete(
+    val audio_length: String,
+    val authors: List<Author>,
+    val children: List<Any>,
+    val cover: String,
+    val cover_color: String,
+    val cover_thumb: String,
+    val epochs: List<Epoch>,
+    val epub: String,
+    val fb2: String,
+    val fragment_data: FragmentData,
+    val genres: List<Genre>,
+    val html: String,
+    val isbn_epub: String,
+    val isbn_mobi: String,
+    val isbn_pdf: String,
+    val kinds: List<Kind>,
+    val language: String,
+    val media: List<Media>,
+    val mobi: String,
+    val parent: Any,
+    val pdf: String,
+    val preview: Boolean,
+    val simple_cover: String,
+    val simple_thumb: String,
+    val title: String,
+    val translators: List<Translator>,
+    val txt: String,
+    val url: String,
+    val xml: String
+)
