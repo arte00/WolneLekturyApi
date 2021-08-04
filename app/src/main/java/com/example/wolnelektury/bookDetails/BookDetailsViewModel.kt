@@ -12,7 +12,7 @@ import retrofit2.Response
 
 class BookDetailsViewModel(private val repository: Repository, href: String) : ViewModel() {
 
-    val convertedHref = convertHref(href)
+    private val convertedHref = convertHref(href)
 
     private val isLoading = MutableLiveData(false)
 

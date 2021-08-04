@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item
+            android:id="@+id/aboutFragment"
+            android:title="@string/menu_item_title_profile"
+            android:icon="@drawable/ic_baseline_person_24"
+            />
+        <item
+            android:id="@+id/loginFragment"
+            android:title="@string/menu_item_title_login"
+            android:icon="@drawable/ic_baseline_login_24"
+            />
+    </group>
+    <group>
+        <item
+            android:title="@string/menu_item_title_favorite"
+            android:icon="@drawable/ic_baseline_favorite_24"
+            />
+    </group>
+
+
+</menu>
