@@ -15,14 +15,11 @@ class BookListViewModel(private val repository: Repository) : ViewModel() {
 
     // Data
 
-    val testDetails = MutableLiveData(false)
-
     private val _books = MutableLiveData<Response<List<Book>>>()
     val books get() = _books
 
     private val _title = MutableLiveData("Ballady")
     val title get() = _title
-
 
     // View operations
 
@@ -30,10 +27,10 @@ class BookListViewModel(private val repository: Repository) : ViewModel() {
     val navigateToBookDetail
         get() = _navigateToBookDetail
 
-    private val _isLoading = MutableLiveData(false)
+    private val isLoading = MutableLiveData(false)
 
-    val progressBarLoading = Transformations.map(_isLoading){
-        progress -> when(progress){
+    val progressBarLoading = Transformations.map(isLoading){
+        state -> when(state){
             false -> View.GONE
             true -> View.VISIBLE
         }
@@ -47,22 +44,20 @@ class BookListViewModel(private val repository: Repository) : ViewModel() {
 
     private fun getExampleBookList(){
         viewModelScope.launch {
-            _isLoading.value = true
+            isLoading.value = true
             val response = repository.getExampleBookList()
             _books.value = response
-            _isLoading.value = false
+            isLoading.value = false
         }
     }
 
     private fun getBookList(){
-        _isLoading.value = true
+        isLoading.value = true
         viewModelScope.launch {
-            Log.d("_TAG", "start")
             val response = repository.getBookList()
             _books.value = response
-            Log.d("_TAG", "done")
         }
-        _isLoading.value = false
+        isLoading.value = false
     }
 
     fun onBookDetailsClicked(href: String){
