@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bookDetailsViewModel"
+            type="com.example.wolnelektury.bookDetails.BookDetailsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".BookDetailsFragment">
+
+        <TextView
+            android:id="@+id/text_details_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{bookDetailsViewModel.title}"
+            tools:text="Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_details_genres" />
+
+        <TextView
+            android:id="@+id/text_details_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{bookDetailsViewModel.author}"
+            tools:text="Authors"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_details_epochs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{bookDetailsViewModel.epochs}"
+            tools:text="Epochs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_details_author" />
+
+        <TextView
+            android:id="@+id/text_details_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{bookDetailsViewModel.genres}"
+            tools:text="Genres"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_details_epochs" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

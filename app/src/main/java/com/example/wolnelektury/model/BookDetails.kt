@@ -1,6 +1,6 @@
 package com.example.wolnelektury.model
 
-data class BookComplete(
+data class BookDetails(
     val audio_length: String,
     val authors: List<Author>,
     val children: List<Any>,

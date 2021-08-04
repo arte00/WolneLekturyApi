@@ -6,15 +6,15 @@
     <data>
 
         <variable
-            name="mainViewModel"
-            type="com.example.wolnelektury.main.MainViewModel" />
+            name="bookListViewModel"
+            type="com.example.wolnelektury.bookList.BookListViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainFragment">
+        tools:context=".bookList.BookListFragment">
 
         <!-- TODO: Update blank fragment layout -->
 
@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{mainViewModel.title}"
+            android:text="@{bookListViewModel.title}"
             tools:text="Friedrich Nietzsche" />
 
         <ProgressBar
@@ -40,7 +40,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="@{mainViewModel.progressBarLoading}"
+            android:visibility="@{bookListViewModel.progressBarLoading}"
             tools:visibility="gone"
             />
 
@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_main"/>
+            tools:listitem="@layout/item_book_list"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

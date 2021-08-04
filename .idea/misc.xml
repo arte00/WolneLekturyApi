@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/drawable/line_divider.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/layout/activity_main.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/layout/fragment_book_details.xml" value="0.4" />
+        <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/layout/fragment_book_list.xml" value="0.1875" />
         <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/layout/fragment_main.xml" value="0.264" />
+        <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/layout/item_book_list.xml" value="0.1875" />
         <entry key="..\:/Users/huber/Android Powaga/app/src/main/res/layout/item_main.xml" value="0.264" />
       </map>
     </option>

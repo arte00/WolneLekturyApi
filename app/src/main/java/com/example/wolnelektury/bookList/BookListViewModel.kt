@@ -1,4 +1,4 @@
-package com.example.wolnelektury.main
+package com.example.wolnelektury.bookList
 
 import android.util.Log
 import android.view.View
@@ -11,18 +11,24 @@ import com.example.wolnelektury.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class BookListViewModel(private val repository: Repository) : ViewModel() {
 
     // Data
+
+    val testDetails = MutableLiveData(false)
 
     private val _books = MutableLiveData<Response<List<Book>>>()
     val books get() = _books
 
-    private val _title = MutableLiveData("Friedrich Nietzsche")
+    private val _title = MutableLiveData("Ballady")
     val title get() = _title
 
 
     // View operations
+
+    private val _navigateToBookDetail = MutableLiveData<String>()
+    val navigateToBookDetail
+        get() = _navigateToBookDetail
 
     private val _isLoading = MutableLiveData(false)
 
@@ -57,6 +63,14 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
             Log.d("_TAG", "done")
         }
         _isLoading.value = false
+    }
+
+    fun onBookDetailsClicked(href: String){
+        _navigateToBookDetail.value = href
+    }
+
+    fun onBookDetailsNavigated(){
+        _navigateToBookDetail.value = null
     }
 
 }

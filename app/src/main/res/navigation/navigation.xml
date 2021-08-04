@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainFragment">
-
+    app:startDestination="@id/bookListFragment">
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.wolnelektury.main.MainFragment"
-        android:label="MainFragment" />
+        android:id="@+id/bookListFragment"
+        android:name="com.example.wolnelektury.bookList.BookListFragment"
+        android:label="BookListFragment"
+        tools:layout="@layout/fragment_book_list">
+        <action
+            android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.example.wolnelektury.bookDetails.BookDetailsFragment"
+        android:label="BookDetailsFragment"
+        tools:layout="@layout/fragment_book_details">
+        <argument
+            android:name="href"
+            app:argType="string" />
+    </fragment>
 </navigation>
