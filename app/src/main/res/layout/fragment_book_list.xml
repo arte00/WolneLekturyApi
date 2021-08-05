@@ -39,6 +39,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_book_list"/>
+                tools:listitem="@layout/item_book_list" />
+
+            <ImageView
+                android:id="@+id/image_empty_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_person_24"
+                android:visibility="gone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

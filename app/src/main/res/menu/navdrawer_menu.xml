@@ -4,21 +4,53 @@
 
     <group>
         <item
-            android:id="@+id/aboutFragment"
-            android:title="@string/menu_item_title_profile"
-            android:icon="@drawable/ic_baseline_person_24"
-            />
-        <item
-            android:id="@+id/loginFragment"
-            android:title="@string/menu_item_title_login"
-            android:icon="@drawable/ic_baseline_login_24"
-            />
+            android:id="@+id/menu_part_user"
+            android:title="@string/text_menu_part_user">
+            <menu>
+
+                <item
+                    android:id="@+id/aboutFragment"
+                    android:title="@string/menu_item_title_profile"
+                    android:icon="@drawable/ic_baseline_person_24"
+                    />
+                <item
+                    android:title="@string/menu_item_title_favorite"
+                    android:icon="@drawable/ic_baseline_favorite_24"
+                    />
+                <item
+                    android:title="@string/menu_item_title_bookmarks"
+                    android:icon="@drawable/ic_baseline_bookmark_24"
+                    />
+
+                <item
+                    android:title="@string/menu_item_title_list"
+                    android:icon="@drawable/ic_baseline_view_list_24"
+                    />
+
+            </menu>
+        </item>
     </group>
+
     <group>
         <item
-            android:title="@string/menu_item_title_favorite"
-            android:icon="@drawable/ic_baseline_favorite_24"
-            />
+            android:id="@+id/menu_part_books"
+            android:title="@string/menu_title_books"
+            >
+            <menu>
+                <item
+                    android:title="@string/menu_item_title_books"
+                    android:icon="@drawable/ic_baseline_book_24"
+                    />
+                <item
+                    android:title="@string/menu_item_title_audiobooks"
+                    android:icon="@drawable/ic_baseline_headset_24"
+                    />
+                <item
+                    android:title="@string/menu_item_title_categories"
+                    android:icon="@drawable/ic_baseline_category_24"
+                    />
+            </menu>
+        </item>
     </group>
 
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/bookListFragment">
+    app:startDestination="@id/genresFragment">
     <fragment
         android:id="@+id/bookListFragment"
         android:name="com.example.wolnelektury.bookList.BookListFragment"
@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_bookListFragment_to_bookDetailsFragment"
             app:destination="@id/bookDetailsFragment" />
+        <argument
+            android:name="href"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailsFragment"
@@ -32,4 +35,13 @@
         android:name="com.example.wolnelektury.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/genresFragment"
+        android:name="com.example.wolnelektury.genres.GenresFragment"
+        android:label="GenresFragment"
+        tools:layout="@layout/fragment_genres">
+        <action
+            android:id="@+id/action_genresFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
+    </fragment>
 </navigation>

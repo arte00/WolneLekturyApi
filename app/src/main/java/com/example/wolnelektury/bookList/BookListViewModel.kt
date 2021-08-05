@@ -11,9 +11,11 @@ import com.example.wolnelektury.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class BookListViewModel(private val repository: Repository) : ViewModel() {
+class BookListViewModel(private val repository: Repository, private val href: String) : ViewModel() {
 
     // Data
+
+    private val hrefConverted = convertHref(href)
 
     private val _books = MutableLiveData<Response<List<Book>>>()
     val books get() = _books
@@ -31,33 +33,25 @@ class BookListViewModel(private val repository: Repository) : ViewModel() {
 
     val progressBarLoading = Transformations.map(isLoading){
         state -> when(state){
-            false -> View.GONE
             true -> View.VISIBLE
+            false -> View.GONE
         }
     }
 
     // FUNCTIONS
 
     init {
-        getExampleBookList()
+        getBookList(hrefConverted)
     }
 
-    private fun getExampleBookList(){
+    private fun getBookList(genre: String){
         viewModelScope.launch {
             isLoading.value = true
-            val response = repository.getExampleBookList()
+            val response = repository.getBookList(genre)
             _books.value = response
+            Log.d("_TAG", response.toString())
             isLoading.value = false
         }
-    }
-
-    private fun getBookList(){
-        isLoading.value = true
-        viewModelScope.launch {
-            val response = repository.getBookList()
-            _books.value = response
-        }
-        isLoading.value = false
     }
 
     fun onBookDetailsClicked(href: String){
@@ -66,6 +60,11 @@ class BookListViewModel(private val repository: Repository) : ViewModel() {
 
     fun onBookDetailsNavigated(){
         _navigateToBookDetail.value = null
+    }
+
+    private fun convertHref(href: String): String {
+        // To remake ... /books/CONTENT
+        return href.substring(35)
     }
 
 }
