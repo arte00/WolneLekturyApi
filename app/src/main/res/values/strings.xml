@@ -19,4 +19,5 @@
     <string name="menu_item_title_books">książki</string>
     <string name="menu_item_title_audiobooks">Audiobooki</string>
     <string name="menu_item_title_categories">Kategorie</string>
+    <string name="text_bookdetails_citate">Cytat:</string>
 </resources>

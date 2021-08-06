@@ -86,7 +86,7 @@ class BookDetailsViewModel(private val repository: Repository, href: String) : V
     }
 
     private fun getListOfEpochs(epochs: List<Epoch>?): String {
-        var string = ""
+        var string = "Epoka: "
         if (epochs != null) {
             for(epoch in epochs){
                 string += "${epoch.name}, "
@@ -96,7 +96,7 @@ class BookDetailsViewModel(private val repository: Repository, href: String) : V
     }
 
     private fun getListOfGenres(genres: List<Genre>?): String {
-        var string = ""
+        var string = "Gatunek literacki: "
         if (genres != null) {
             for(genre in genres){
                 string += "${genre.name}, "

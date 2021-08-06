@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.wolnelektury.R
 import com.example.wolnelektury.databinding.FragmentBookDetailsBinding
 import com.example.wolnelektury.databinding.FragmentBookListBinding
 import com.example.wolnelektury.repository.Repository
@@ -47,6 +49,7 @@ class BookDetailsFragment : Fragment() {
                 false -> {
                     binding.progrssBarBookdetails.visibility = View.GONE
                     binding.cardBookdetails.visibility = View.VISIBLE
+                    binding.imageBackground.setBackgroundResource(R.color.teal_100)
                 }
             }
         })
