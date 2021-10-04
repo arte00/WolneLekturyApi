@@ -1,17 +1,20 @@
 package com.example.wolnelektury.bookList
 
+import android.app.Application
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.wolnelektury.database.FavoriteDatabaseDao
 import com.example.wolnelektury.model.Book
 import com.example.wolnelektury.repository.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class BookListViewModel(private val repository: Repository, private val href: String) : ViewModel() {
+class BookListViewModel(private val repository: Repository,
+                        private val database: FavoriteDatabaseDao,
+                        private val href: String,
+                        application: Application
+                        ) : AndroidViewModel(application) {
 
     // Data
 

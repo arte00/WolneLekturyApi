@@ -69,7 +69,13 @@ class BookListFragment : Fragment() {
     private fun setUpAdapter(){
         val adapter = BookListAdapter(BookListListener { href ->
             viewModel.onBookDetailsClicked(href)
-        })
+        },
+            BookmarkListener {
+                href -> Toast.makeText(activity, href, Toast.LENGTH_SHORT).show()
+                Log.d("to jest href : ___${href}___", "_TAG")
+                // TUTAJ DODAWANIE DO BAZY DANYCH DO ULUBIONYCH
+            }
+        )
         binding.listBooks.adapter = adapter
         viewModel.books.observe(viewLifecycleOwner, {
             it?.let {

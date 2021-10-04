@@ -13,7 +13,8 @@ import com.example.wolnelektury.model.Book
 private const val ITEM_VIEW_TYPE_HEADER = 0
 private const val ITEM_VIEW_TYPE_ITEM = 1
 
-class BookListAdapter(private val clickListener: BookListListener): ListAdapter<DataItem, RecyclerView.ViewHolder>(BookListDiffCallback()) {
+class BookListAdapter(private val clickListener: BookListListener,
+                        private val bookmarkClickListener: BookmarkListener): ListAdapter<DataItem, RecyclerView.ViewHolder>(BookListDiffCallback()) {
 
 
     override fun getItemViewType(position: Int): Int {
@@ -39,6 +40,7 @@ class BookListAdapter(private val clickListener: BookListListener): ListAdapter<
             fun from(parent: ViewGroup): TextViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val view = layoutInflater.inflate(R.layout.header_book_list, parent, false)
+
                 return TextViewHolder(view)
             }
         }
@@ -47,9 +49,10 @@ class BookListAdapter(private val clickListener: BookListListener): ListAdapter<
 
     class ViewHolder private constructor(private val binding: ItemBookListBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: Book, clickListener: BookListListener) {
+        fun bind(item: Book, clickListener: BookListListener, bookmarkClickListener: BookmarkListener) {
             binding.book = item
             binding.clickListener = clickListener
+            binding.bookmarkClickListener = bookmarkClickListener
             binding.executePendingBindings()
         }
 
@@ -67,7 +70,7 @@ class BookListAdapter(private val clickListener: BookListListener): ListAdapter<
         when (holder) {
             is ViewHolder -> {
                 val bookItem = getItem(position) as DataItem.BookItem
-                holder.bind(bookItem.book, clickListener)
+                holder.bind(bookItem.book, clickListener, bookmarkClickListener)
             }
         }
     }
@@ -93,6 +96,10 @@ class BookListDiffCallback : DiffUtil.ItemCallback<DataItem>() {
 }
 
 class BookListListener(val clickListener: (href: String) -> Unit) {
+    fun onClick(book: Book) = clickListener(book.href)
+}
+
+class BookmarkListener(val clickListener: (href: String) -> Unit) {
     fun onClick(book: Book) = clickListener(book.href)
 }
 

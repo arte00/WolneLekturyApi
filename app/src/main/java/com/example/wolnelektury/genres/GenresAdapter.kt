@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wolnelektury.databinding.ItemGenresListBinding
 import com.example.wolnelektury.model.Genre
 
-class GenresAdapter(val clickListener: GenreListener) : ListAdapter<Genre, GenresAdapter.ViewHolder>(SleepNightDiffCallback()) {
+class GenresAdapter(private val clickListener: GenreListener) : ListAdapter<Genre, GenresAdapter.ViewHolder>(SleepNightDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position)!!, clickListener)
