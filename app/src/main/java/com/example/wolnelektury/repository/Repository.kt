@@ -24,4 +24,8 @@ class Repository {
         return RetrofitInstance.api.getGenres()
     }
 
+    suspend fun insert(){
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.wolnelektury.bookList
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -11,7 +12,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
+import androidx.room.Database
 import com.example.wolnelektury.R
+import com.example.wolnelektury.database.FavoriteDatabase
+import com.example.wolnelektury.database.FavoriteDatabaseDao
 import com.example.wolnelektury.databinding.FragmentBookListBinding
 import com.example.wolnelektury.repository.Repository
 
@@ -31,7 +35,10 @@ class BookListFragment : Fragment() {
         _binding = FragmentBookListBinding.inflate(layoutInflater, container, false)
 
         val repository = Repository()
-        val viewModelFactory = BookListViewModelFactory(repository, args.href)
+        val application = requireNotNull(this.activity).application
+        val database = FavoriteDatabase.getInstance(application).favoriteDatabaseDao
+        val viewModelFactory = BookListViewModelFactory(repository, database, args.href, application)
+
         viewModel = ViewModelProvider(this, viewModelFactory).get(BookListViewModel::class.java)
         binding.bookListViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -71,8 +78,9 @@ class BookListFragment : Fragment() {
             viewModel.onBookDetailsClicked(href)
         },
             BookmarkListener {
-                href -> Toast.makeText(activity, href, Toast.LENGTH_SHORT).show()
-                Log.d("to jest href : ___${href}___", "_TAG")
+                href -> viewModel.onAddedToFavorite(href)
+//                Toast.makeText(activity, href, Toast.LENGTH_SHORT).show()
+//                Log.d("to jest href : ___${href}___", "_TAG")
                 // TUTAJ DODAWANIE DO BAZY DANYCH DO ULUBIONYCH
             }
         )

@@ -12,5 +12,5 @@ data class FavoriteBook(
     @ColumnInfo(name = "href")
     val href: String,
     @ColumnInfo(name = "book_details")
-    val book: BookDetails
+    val book: String
 )

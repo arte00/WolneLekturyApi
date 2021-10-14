@@ -20,6 +20,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/list_item_booklist"
         android:layout_width="match_parent"
         android:layout_height="156dp"
         android:onClick="@{() -> clickListener.onClick(book)}">

@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [FavoriteBook::class], version = 1, exportSchema = false)
 abstract class FavoriteDatabase : RoomDatabase() {
 
-    abstract val favoriteDatabase: FavoriteDatabaseDao
+    abstract val favoriteDatabaseDao: FavoriteDatabaseDao
 
     companion object{
 
@@ -24,10 +24,10 @@ abstract class FavoriteDatabase : RoomDatabase() {
                         context.applicationContext,
                         FavoriteDatabase::class.java,
                         "favorite_database"
-                    ).fallbackToDestructiveMigration()
+                    )   .fallbackToDestructiveMigration()
                         .build()
+                    INSTANCE = instance
                 }
-
                 return instance
             }
         }

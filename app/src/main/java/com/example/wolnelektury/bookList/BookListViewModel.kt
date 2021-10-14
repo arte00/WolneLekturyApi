@@ -4,15 +4,17 @@ import android.app.Application
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
+import com.example.wolnelektury.database.FavoriteBook
 import com.example.wolnelektury.database.FavoriteDatabaseDao
 import com.example.wolnelektury.model.Book
 import com.example.wolnelektury.repository.Repository
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class BookListViewModel(private val repository: Repository,
                         private val database: FavoriteDatabaseDao,
-                        private val href: String,
+                        href: String,
                         application: Application
                         ) : AndroidViewModel(application) {
 
@@ -52,7 +54,7 @@ class BookListViewModel(private val repository: Repository,
             isLoading.value = true
             val response = repository.getBookList(genre)
             _books.value = response
-            Log.d("_TAG", response.toString())
+            // Log.d("_TAG", response.toString())
             isLoading.value = false
         }
     }
@@ -63,6 +65,12 @@ class BookListViewModel(private val repository: Repository,
 
     fun onBookDetailsNavigated(){
         _navigateToBookDetail.value = null
+    }
+
+    fun onAddedToFavorite(href: String){
+//        val bookJson = Gson().toJson()
+//        val favorite = FavoriteBook(0, href, )
+//        database.insert()
     }
 
     private fun convertHref(href: String): String {
